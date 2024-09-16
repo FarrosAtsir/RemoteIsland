@@ -62,60 +62,67 @@ class _DetailMobileState extends State<DetailMobile> {
                 )
               ]
           ),
-          const SizedBox(height: 20),
-          Container(
-            child: Text(
-              widget.pulau.nama,
-              style: const TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          Container(
-            margin: const EdgeInsets.only(left: 16),
-            child: Row(
+          Card(
+            margin: const EdgeInsets.all(20),
+            child: Column(
               children: [
-                const Icon(Icons.location_pin, size: 20,),
-                Text(widget.pulau.lokasi, style: const TextStyle(fontSize: 17),)
+              const SizedBox(height: 20),
+              Container(
+                child: Text(
+                  widget.pulau.nama,
+                  style: const TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+                Container(
+                  margin: const EdgeInsets.only(left: 16),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.location_pin, size: 20,),
+                      Text(widget.pulau.lokasi, style: const TextStyle(fontSize: 17),)
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 15,),
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  child: Text(
+                      textAlign: TextAlign.justify,
+                      widget.pulau.deskripsi
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  margin: const EdgeInsets.only(top: 40),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        IconButton(
+                            onPressed: ()=>setState(() {
+                              widget.pulau.like = !widget.pulau.like;
+                            }),
+                            icon: Icon(
+                                widget.pulau.like == true ? Icons.thumb_up : Icons.thumb_up_outlined
+                            )
+                        ),
+                        IconButton(
+                            onPressed: ()=>setState(() {
+                              widget.pulau.fav = !widget.pulau.fav;
+                            }),
+                            icon: Icon(
+                                widget.pulau.fav == true ? Icons.bookmark : Icons.bookmark_outline
+                            )
+                        ),
+                        IconButton(onPressed: (){}, icon: const Icon(Icons.share))
+                      ]
+                  ),
+                )
               ],
             ),
           ),
-          const SizedBox(height: 15,),
-          Container(
-            padding: const EdgeInsets.all(16),
-            child: Text(
-              textAlign: TextAlign.justify,
-                widget.pulau.deskripsi
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(16),
-            margin: const EdgeInsets.only(top: 40),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  onPressed: ()=>setState(() {
-                    widget.pulau.like = !widget.pulau.like;
-                  }),
-                  icon: Icon(
-                    widget.pulau.like == true ? Icons.thumb_up : Icons.thumb_up_outlined
-                  )
-                ),
-                IconButton(
-                    onPressed: ()=>setState(() {
-                      widget.pulau.fav = !widget.pulau.fav;
-                    }),
-                    icon: Icon(
-                        widget.pulau.fav == true ? Icons.bookmark : Icons.bookmark_outline
-                    )
-                ),
-                IconButton(onPressed: (){}, icon: const Icon(Icons.share))
-              ]
-            ),
-          )
         ],
       );
   }
